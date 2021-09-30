@@ -4,9 +4,10 @@ class Main {
   public static void main(String[] args) {
     SketchPad s = new SketchPad(500, 500);
     // (int) (Math.floor(Math.random() * 90)) * 10
+    // Double.POSITIVE_INFINITY
     int numThreads = 0;
     try {
-      for (double i = 0; i < Double.POSITIVE_INFINITY; i++) {
+      for (double i = 0; i < 100f; i++) {
         Thread t = new Thread(() -> {
           DrawingTool pencil = new DrawingTool(s);
 

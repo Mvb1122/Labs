@@ -74,21 +74,25 @@ public class Main {
             // fools using this program by preventing any possible errors from crashing the program.
             try {
                 try {
-                    // First, I got the input from the text box and then used the parse() method on the PiggyBank class to turn it into the proper array of values that the normal constructor uses.
-                    int[] displayedCoins = PiggyBank.parse(input.getText());
-                    // Then, I get the PiggyBank and set the value of it to the user's input.
-                    p.get().set(displayedCoins);
-                    // Next and finally, I update the display to hold the latest information on the PiggyBank.
-                    label.setText(p.get().toString());
-                } catch (NumberFormatException N) {
-                    // Do nothing, since this means that the user's input is malformed, and they probably accidentally clicked the button.
+                    try {
+                        // First, I got the input from the text box and then used the parse() method on the PiggyBank class to turn it into the proper array of values that the normal constructor uses.
+                        int[] displayedCoins = PiggyBank.parse(input.getText());
+                        // Then, I get the PiggyBank and set the value of it to the user's input.
+                        p.get().set(displayedCoins);
+                        // Next and finally, I update the display to hold the latest information on the PiggyBank.
+                        label.setText(p.get().toString());
+                    } catch (NumberFormatException N) {
+                        // Do nothing, since this means that the user's input is malformed, and they probably accidentally clicked the button.
+                    }
+                } catch (StringIndexOutOfBoundsException S) {
+                    // See above comment.
                 }
-            } catch (StringIndexOutOfBoundsException S) {
+            } catch (ArrayIndexOutOfBoundsException E) {
                 // See above comment.
             }
         });
 
-        // ~~~~ The code below here is basically copy and paste, so skip to line 139 ~~~~
+        // ~~~~ The code below here is basically copy and paste, so skip to line 151 ~~~~
 
         // Create a button which adds the specified coins.
         JButton addButton = new JButton("Add");
@@ -99,16 +103,20 @@ public class Main {
         addButton.addActionListener(e -> {
             try {
                 try {
-                    // Gets the user's input in the proper form.
-                    int[] displayedCoins = PiggyBank.parse(input.getText());
-                    // Adds the user's input to the bank.
-                    p.get().add(displayedCoins);
-                    // Updates the label.
-                    label.setText(p.get().toString());
-                } catch (NumberFormatException N) {
-                    // Do nothing, since this means that the user's input is malformed, and they probably accidentally clicked the button.
+                    try {
+                        // Gets the user's input in the proper form.
+                        int[] displayedCoins = PiggyBank.parse(input.getText());
+                        // Adds the user's input to the bank.
+                        p.get().add(displayedCoins);
+                        // Updates the label.
+                        label.setText(p.get().toString());
+                    } catch (NumberFormatException N) {
+                        // Do nothing, since this means that the user's input is malformed, and they probably accidentally clicked the button.
+                    }
+                } catch (StringIndexOutOfBoundsException S) {
+                    // See above comment.
                 }
-            } catch (StringIndexOutOfBoundsException S) {
+            } catch (ArrayIndexOutOfBoundsException E) {
                 // See above comment.
             }
         });
@@ -122,16 +130,20 @@ public class Main {
         subtractButton.addActionListener(e -> {
             try {
                 try {
-                    // Get
-                    int[] displayedCoins = PiggyBank.parse(input.getText());
-                    // Set
-                    p.get().subtract(displayedCoins);
-                    // Display
-                    label.setText(p.get().toString());
-                } catch (NumberFormatException N) {
-                    // Do nothing, since this means that the user's input is malformed, and they probably accidentally clicked the button.
+                    try {
+                        // Get
+                        int[] displayedCoins = PiggyBank.parse(input.getText());
+                        // Set
+                        p.get().subtract(displayedCoins);
+                        // Display
+                        label.setText(p.get().toString());
+                    } catch (NumberFormatException N) {
+                        // Do nothing, since this means that the user's input is malformed, and they probably accidentally clicked the button.
+                    }
+                } catch (StringIndexOutOfBoundsException S) {
+                    // See above comment.
                 }
-            } catch (StringIndexOutOfBoundsException S) {
+            } catch (ArrayIndexOutOfBoundsException E) {
                 // See above comment.
             }
         });

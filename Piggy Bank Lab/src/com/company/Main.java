@@ -23,7 +23,7 @@ public class Main {
         int maxX, maxY, buttonHeight, buttonWidth;
 
         // maxX is how wide the window is.
-        maxX = 600;
+        maxX = 900;
 
         // maxY is how tall the window is.
         maxY = 300;

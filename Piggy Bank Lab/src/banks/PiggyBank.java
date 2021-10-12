@@ -1,8 +1,6 @@
 package banks;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Locale;
 
 public class PiggyBank {
@@ -126,7 +124,10 @@ public class PiggyBank {
             // we can find the value of the coin by multiplying its amount times its value.
             value += coins[i] * values[i];
         }
-        return value;
+
+        // Patch: Fix weird decimal results involving 116 dimes.
+        // (Basically, I force it to cut the decimals at the hundredth's place and then send that value along.)
+        return ((double) (int) (value * 100)) / 100;
     }
 
     /**
@@ -167,7 +168,7 @@ public class PiggyBank {
         }
 
         // Loop through every third space.
-            // Create an Array to hold the outputted coins.
+        // Create an Array to hold the outputted coins.
         int[] coins = new int[names.length];
 
         for (int i = 0; i < spaceIndexes.size(); i += 2) {
@@ -248,7 +249,7 @@ public class PiggyBank {
     public void set(int[] input) {
         // Give a warning if the input's the wrong length.
         if (input.length != names.length) System.out.println("Your input array is not the correct length! (" + input.length + " != " + names.length + ")");
-        // Else, it just copies the values from the input over to the object's array.
+            // Else, it just copies the values from the input over to the object's array.
         else this.coins = input;
     }
 
@@ -265,7 +266,7 @@ public class PiggyBank {
                 break;
             }
         }
-        
+
         // Check if there's more than 1 filled slot and if the bank is empty.
         boolean moreThanOneFilledSlot = false;
         boolean empty = false;
@@ -299,7 +300,7 @@ public class PiggyBank {
                 else output += ", ";
             }
         }
-        // If the bank's empty, put "nothing" instead.
+            // If the bank's empty, put "nothing" instead.
         else output += "nothing. ";
 
         // Add information about the bank's value and return the string.

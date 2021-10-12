@@ -3,14 +3,13 @@ package com.company;
 import banks.PiggyBank;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class Main {
 
     public static void main(String[] args) {
         // Create a bank for the program to use.
-            // Note, I had to make the piggy-bank atomic, since IntelliJ was complaining about access from other threads. (on a button's click.)
+        // Note, I had to make the piggy-bank atomic, since IntelliJ was complaining about access from other threads. (on a button's click.)
         AtomicReference<PiggyBank> p = new AtomicReference<>(new PiggyBank("26 Quarters, 35 Pennies, 29 Dimes"));
         JFrame frame = new JFrame("Piggy Bank Lab");
         // Set the window's layout to `null` so I can use manual positioning.

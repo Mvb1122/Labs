@@ -304,34 +304,7 @@ public class PiggyBank {
         else output += "nothing. ";
 
         // Add information about the bank's value and return the string.
-        output += "This gives it a value of $" + padPrecision(getValue(), 2) + ".";
+        output += "This gives it a value of $" + getValue() + ".";
         return output;
-    }
-
-    /**
-     * A custom method which pads a double's value out to the specified number of places.
-     * @param d The double you want to pad.
-     * @param places The number of places to pad to.
-     * @return A string containing the double's new value.
-     */
-    private static String padPrecision(double d, int places) {
-        // Flat-round the double to the specified precision.
-        d = (double) (int) (d * Math.pow(10, places)) / Math.pow(10, places);
-
-        // Convert the double to a string, so I can find the index of the decimal.
-        String s = String.valueOf(d);
-
-        // Find the index of the decimal.
-        int decimalIndex = s.indexOf(".");
-        int newLength = decimalIndex + places;
-
-        // Cut a substring, which should start at the beginning, then run until the decimal, plus the number of places.
-        s = s.substring(0, newLength);
-
-        // Add zeroes onto the end of the input until it's the correct length.
-        while (s.length() < newLength) s += "0";
-
-        // Return the extended string.
-        return s;
     }
 }

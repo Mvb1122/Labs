@@ -10,3 +10,4 @@ java -jar run.jar
 
 # Remove it to ensure a clean compile every time.
 rm run.jar
+echo JAR removed.

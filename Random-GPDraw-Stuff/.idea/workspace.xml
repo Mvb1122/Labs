@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c1078e5-0960-4a83-ad58-8f4b24c6db0d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Piggy Bank Lab/out/production/Piggy Bank Lab/banks/PiggyBank.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Piggy Bank Lab/out/production/Piggy Bank Lab/banks/PiggyBank.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Piggy Bank Lab/out/production/Piggy Bank Lab/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Piggy Bank Lab/out/production/Piggy Bank Lab/com/company/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +69,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

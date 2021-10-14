@@ -9,6 +9,7 @@ class Main {
     try {
       for (double i = 0; i < 300f; i++) {
         Thread t = new Thread(() -> {
+          try { Thread.sleep(1000); } catch (InterruptedException e) { ; }
           DrawingTool pencil = new DrawingTool(s);
 
           while (true) {
@@ -23,6 +24,5 @@ class Main {
     } catch (java.lang.OutOfMemoryError e) {
       System.out.println("Ran out of memory at " + numThreads + " threads.");
     }
-
   }
 }

@@ -47,9 +47,8 @@ public class Main {
             }
 
             // Calculate Sum.
-            int sum = 0;
-            for (int i = 0; i < values.length; i++) sum += values[i];
-            // System.out.println("The sum is " + sum + ".");
+            int sum = 0; // The lab says to use a long, but the maximum value for a random list of integers that's 1000u long from 0 to 100 is only 100,000, so you actually don't have to.
+            for (int k : values) sum += k;
 
             // Calculate Average:
             double average = (double) sum / values.length;
@@ -109,7 +108,7 @@ public class Main {
             }
 
             // Output.
-            System.out.printf("The average is %s, %nThe STDev is %s, %nThe mode is %s.", average, STDev, mode);
+            System.out.printf("The average is %.2f, %nThe STDev is %.2f, %nThe mode is %.2f.", average, STDev, (double) mode);
 
 
         } catch (IOException e) {

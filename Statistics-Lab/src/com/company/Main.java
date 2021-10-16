@@ -1,118 +1,101 @@
 package com.company;
 
+import java.awt.*;
 import java.io.IOException;
+import Math.Statistics;
+
+import javax.swing.*;
 
 public class Main {
+    static JFrame window;
+    static JTextArea numberInput;
+    static JScrollPane scrollPane;
+    static JLabel label;
 
     public static void main(String[] args) {
+        // Create variables to hold layout information.
+        int maxX = 500;
+        int maxY = 500;
+        int buttonHeight = 75;
+        int labelHeight = 25;
+
+        // Create a window for the program to run in.
+        window = new JFrame("Arrays Lab");
+        // Make the program close when the X button is hit.
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create a text input for the numbers.
+        numberInput = new JTextArea("ERROR: Invalid input.");
+            // Make it editable.
+        numberInput.setEditable(true);
+            // Make it as wide as it can be and as tall as it can be, while leaving 75 px of space for the text and button below/above it.
+        numberInput.setBounds(0, 0, maxX, maxY - labelHeight - buttonHeight);
+
+        // Create a scrollPane to hold the number input.
+        scrollPane = new JScrollPane(numberInput);
+            // Make the vertical scroll bar always visible.
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            // Place it 50 px down and make it just wide enough to fill the window while still leaving space for the scroll bar itself, and make it the maximum minus the label height and button height tall, as to allow the button to fit.
+        scrollPane.setBounds(0, labelHeight, maxX-15, maxY - labelHeight - buttonHeight - 45);
+
+        // Create a label to show the data's information at the top of the screen.
+        label = new JLabel("TEXT", JLabel.CENTER);
+        label.setBounds(0, 0, maxX, buttonHeight);
+        label.setVerticalAlignment(JLabel.NORTH);
+
+        // Create button to process the data.
+        JButton goButton = new JButton("Go!");
+        goButton.setBounds(0, maxY - buttonHeight - 45, maxX, buttonHeight);
+        // Have the button call the process method when it's clicked.
+        goButton.addActionListener(e -> {
+            process();
+        });
+
+        // Add the elements to the window.
+        window.add(goButton);
+        window.add(scrollPane);
+        window.add(label);
+
+        // Set the window properties.
+        window.setLayout(null);
+        window.setSize(maxX, maxY);
+        window.setVisible(true);
+
+
+        // On first launch, load the numbers from numbers.txt, display them, and process them.
         try {
             // Read file.
             String data = Reader.readFile("numbers.txt");
 
+            // Set the input text to be the read numbers.
+            numberInput.setText(data);
+
+            process();
+        } catch (IOException e) {
+            System.out.printf("An error has occurred: %n%s", e);
+            label.setText(e.toString());
+        }
+    }
+
+    public static void process() {
+        try {
             // Split the input by the newLine char, then put it into an int[].
-            int[] values;
-            {
-                // Find the number of newLines
-                int numNewLines = 0;
-                for (int i = 0; i < data.length(); i++) if (data.charAt(i) == '\n') numNewLines++;
-                // Find newlines
-                int[] newLineIndexes = new int[numNewLines];
-                int filledIndexes = 0;
-                for (int i = 0; i < data.length(); i++) if (data.charAt(i) == '\n') {
-                    newLineIndexes[filledIndexes] = i;
-                    filledIndexes++;
-                }
-
-                // Split to int[]
-                values = new int[filledIndexes + 1];
-                for (int i = 0; i < values.length; i++) {
-                    // Get a substring from either 0 to the index of the space, the previous space to the next one, or from the last one to the end of the file.
-                    String number;
-                    if (i == 0) {
-                        // For the first number:
-                        number = data.substring(0, newLineIndexes[0]);
-                    } else {
-                        try {
-                            // For middling numbers:
-                            number = data.substring(newLineIndexes[i-1] + 1, newLineIndexes[i]);
-                        } catch (ArrayIndexOutOfBoundsException e) {
-                            // For the last number:
-                            number = data.substring(newLineIndexes[newLineIndexes.length - 1] + 1);
-                        }
-                    }
-
-                    // Parse to number, then push to the array.
-                    values[i] = Integer.parseInt(number.trim());
-                }
-            }
-
-            // Calculate Sum.
-            int sum = 0; // The lab says to use a long, but the maximum value for a random list of integers that's 1000u long from 0 to 100 is only 100,000, so you actually don't have to.
-            for (int k : values) sum += k;
+            int[] values = Helpers.parseToIntArray(numberInput.getText());
 
             // Calculate Average:
-            double average = (double) sum / values.length;
-
-            // Determine the difference of each number from the average, and square each difference.
-            double[] differences = new double[values.length];
-            for (int i = 0; i < values.length; i++) {
-                differences[i] = Math.pow(average - (double) values[i], 2);
-            }
-
-            // Calculate the sum of all differences.
-            double sumDifferences = 0;
-            for (double value : differences) {
-                sumDifferences += value;
-            }
-
-            // Divide the sum by the number of values, minus one.
-            double divisionProblem = sumDifferences / (values.length - 1);
+            double average = Statistics.mean(values);
 
             // Get the square root of the sum.
-            double STDev = Math.sqrt(divisionProblem);
+            double STDev = Statistics.STDiv(values); // Math.sqrt(divisionProblem);
 
             // Find the mode
-            int mode = 0;
-            {
-                // Create two arrays, one which holds a matching value, and the other which holds the number of values.
-                int[] matching = new int[values.length];
-                int[] numberOfValues = new int[values.length];
+            int mode = Statistics.mode(values);
 
-                for (int i = 0; i < values.length; i++) {
-                    // Loop through each value in the matching array, and if it's the correct one, increase the corresponding numberOfValues value by one.
-                    boolean matchFound = false;
-                    for (int j = 0; j < matching.length; j++) {
-                        if (matching[i] == values[i]) {
-                            numberOfValues[i]++;
-                            matchFound = true;
-                            break;
-                        }
-                    }
-
-                    // If no match was found, find the first empty index in matching[] and then fill it.
-                    for (int j = 0; j < matching.length && !matchFound; j++) {
-                        if (matching[i] == '\u0000') {
-                            matching[i] = values[i];
-                            numberOfValues[i]++;
-                            break;
-                        }
-                    }
-                }
-
-                // Find the most-used number in the list.
-                for (int i = 0; i < matching.length; i++) {
-                    if (numberOfValues[i] != 0 && numberOfValues[i] > mode) {
-                        mode = matching[i];
-                    }
-                }
-            }
-
-            // Output.
-            System.out.printf("The average is %.2f, %nThe STDev is %.2f, %nThe mode is %.2f.", average, STDev, (double) mode);
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            // Create and display output.
+            String text = "The average is " + Helpers.flatRound(average, 2) + ", \nThe STDev is " + Helpers.flatRound(STDev, 2) + ", \nThe mode is " + mode + ".";
+            label.setText(text);
+        } catch (NumberFormatException e) {
+            // Do nothing, since this error means that the user has malformed the input.
         }
     }
 }

@@ -33,10 +33,10 @@ public class Main {
         // Make the vertical scroll bar always visible.
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         // Place it 50 px down and make it just wide enough to fill the window while still leaving space for the scroll bar itself, and make it the maximum minus the label height and button height tall, as to allow the button to fit.
-        scrollPane.setBounds(0, labelHeight, maxX-15, maxY - labelHeight - buttonHeight - 45);
+        scrollPane.setBounds(0, labelHeight, maxX - 15, maxY - labelHeight - buttonHeight - 45);
 
         // Create a label to show the data's information at the top of the screen.
-        label = new JLabel("TEXT", JLabel.CENTER);
+        label = new JLabel("Enter your numbers below and then hit the \"Go\" button.", JLabel.CENTER);
         label.setBounds(0, 0, maxX, buttonHeight);
         label.setVerticalAlignment(JLabel.NORTH);
 

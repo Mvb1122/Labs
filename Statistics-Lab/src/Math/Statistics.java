@@ -32,6 +32,42 @@ public class Statistics {
         return Math.sqrt(differencesSum);
     }
 
+    /**
+     * Finds the maximum value in an int[].
+     * @param values The array you want to search through.
+     * @return The maximum value in the array.
+     */
+    public static int max(int[] values) {
+        // Create a variable to hold the maximum.
+        int max = 0;
+
+        // Loop through the array, and if an element is greater than the maximum, set the maximum to it.
+        for (int value : values) {
+            if (value > max) max = value;
+        }
+
+        // Return the maximum.
+        return max;
+    }
+
+    /**
+     * Finds the minimum value in an int[].
+     * @param values The array you want to search through.
+     * @return The minimum value in the array.
+     */
+    public static int min(int[] values) {
+        // Create a variable to hold the minimum.
+        int min = 100;
+
+        // Loop through the array, and if an element is less than the minimum, set the minimum to it.
+        for (int value : values) {
+            if (value < min) min = value;
+        }
+
+        // Return the minimum.
+        return min;
+    }
+
     public static int mode(int[] values) {
         // Find the mode
         int mode = 0;

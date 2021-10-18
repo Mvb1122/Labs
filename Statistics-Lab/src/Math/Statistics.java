@@ -39,7 +39,7 @@ public class Statistics {
      */
     public static int max(int[] values) {
         // Create a variable to hold the maximum.
-        int max = 0;
+        int max = (int) Double.NEGATIVE_INFINITY;
 
         // Loop through the array, and if an element is greater than the maximum, set the maximum to it.
         for (int value : values) {
@@ -57,7 +57,7 @@ public class Statistics {
      */
     public static int min(int[] values) {
         // Create a variable to hold the minimum.
-        int min = 100;
+        int min = (int) Double.POSITIVE_INFINITY;
 
         // Loop through the array, and if an element is less than the minimum, set the minimum to it.
         for (int value : values) {

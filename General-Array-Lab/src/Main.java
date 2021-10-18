@@ -62,7 +62,7 @@ public class Main {
     public static void process() {
         try {
             // Split the input by the newLine char, then put it into an int[].
-            int[] values = Helpers.parseToIntArray(numberInput.getText());
+            int[] values = Helpers.parseToIntArray(numberInput.getText().trim() + '\n');
 
             // Find the minimum:
             int minimum = Statistics.min(values);

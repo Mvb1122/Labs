@@ -1,8 +1,10 @@
 package com.company;
 
+import java.util.Locale;
+
 /**
  * @author Micah Bushman
- * @author Rapheal what's-his-last-name
+ * @author Raphael Landau
  */
 public class StringUtil {
 
@@ -27,8 +29,14 @@ public class StringUtil {
      * @return True if it's a palindrome, or false if it isn't.
      */
     public static boolean isPalindrome(String input) {
-        // Written by Micah - you can tell because the brackets left to get milk and cigarettes
-        input = input.replaceAll(" ", "").toLowerCase();
+        // Written by Micah
+
+        // Remove spaces and other punctuation.
+        input = input.replaceAll(" ", "")
+                     .replaceAll(",", "")
+                     .replaceAll("\\.","")
+                     .replaceAll("\\?", "")
+                     .toLowerCase();
 
         for (int i = 0; i < input.length() / 2; i++)
             if (input.charAt(i) != input.charAt(input.length() - 1 - i)) return false;
@@ -42,8 +50,8 @@ public class StringUtil {
      * @returns The string, converted to Pig Latin.
      */
     public static String toPigLatin(String input) {
-        // Raphael Written Code - you can tell because it has brackets
-        //checks if input has any values
+        // Raphael Written Code
+        // Checks if input has any values
         boolean hasVowels = false;
         boolean startsVowel = false;
         for (int index = 0; index < input.length(); index++) {
@@ -100,10 +108,10 @@ public class StringUtil {
     public static String toShortHand(String input) {
         //Micah written code, you can tell because it's unreadable
         String output = input.toLowerCase()
-                             .replaceAll("and", "&")
-                             .replaceAll("to", "2")
-                             .replaceAll("you", "U")
-                             .replaceAll("for", "4");
+                .replaceAll("and", "&")
+                .replaceAll("to", "2")
+                .replaceAll("you", "U")
+                .replaceAll("for", "4");
 
         for (int i = 0; i < output.length(); i++)
             for (char vowel : vowels)

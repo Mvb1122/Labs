@@ -29,7 +29,7 @@ public class Main {
             }
 
             // Test toShortHand()
-            System.out.println(StringUtil.toShortHand("And then I said, balls."));
+            System.out.println(StringUtil.toShortHand("My mother says I can't go outside and play."));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -91,6 +91,7 @@ public class Main {
 
         // Set up the UI on initial boot.
         fixUI();
+        fixUI();
     }
 
     static int buttonHeight = 50;
@@ -121,7 +122,8 @@ public class Main {
 
         output = new JLabel("Is Palindrome: " + StringUtil.isPalindrome(input.getText()));
         output.setBounds(0, 0, frame.getWidth(), buttonHeight);
-        output.setVerticalAlignment(SwingConstants.NORTH);
+        output.setVerticalTextPosition(SwingConstants.NORTH);
+        output.setHorizontalTextPosition(SwingConstants.CENTER);
         frame.add(output);
     }
 }

@@ -3,8 +3,6 @@ package com.company;
 import ceiling.*;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
@@ -41,12 +39,12 @@ public class Main {
 
         // Put the vents in, gradually.
         for (int y = 0; y < ceiling[0].length; y += 3) {
-            ceiling[3][y] = new Vent();
+            ceiling[4][y] = new Vent();
             ceiling[ceiling.length - 4][y] = new Vent();
 
             try {
                 Thread.sleep(16 * 2);
-            } catch (InterruptedException e) {;}
+            } catch (InterruptedException ignored) {;}
         }
 
         // Create buttons to toggle the vents and fans.
@@ -109,13 +107,17 @@ public class Main {
             }
         });
 
+        // Set the button window to be visible.
         buttonDisplay.setVisible(true);
-
 
         // Print out the array.
         print2DArray(ceiling);
     }
 
+    /**
+     * This simply method just outputs a representation of a 2D array.
+     * @param arr A Tile[][] to be printed.
+     */
     public static void print2DArray(Object[][] arr) {
         String output = "[";
         for (Object[] objects : arr) {

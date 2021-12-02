@@ -40,7 +40,7 @@ public class Main {
         // Put the vents in, gradually.
         for (int y = 0; y < ceiling[0].length; y += 3) {
             ceiling[4][y] = new Vent();
-            ceiling[ceiling.length - 4][y] = new Vent();
+            ceiling[ceiling.length - 5][y] = new Vent();
 
             try {
                 Thread.sleep(16 * 2);

@@ -1,7 +1,5 @@
 package VinegereEncryption;
 
-import org.junit.jupiter.engine.execution.InvocationInterceptorChain;
-
 public class EncryptionEngine {
     private String str, key;
 
@@ -14,7 +12,7 @@ public class EncryptionEngine {
     // methods
     public String encrypt() throws VigenereException {
         if (str.length() != key.length()) throw new VigenereException("Your key and value don't have the same length!");
-        
+
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);

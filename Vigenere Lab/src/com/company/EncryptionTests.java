@@ -29,4 +29,11 @@ public class EncryptionTests {
             ex.printStackTrace();
         }
     }
+
+    @Test
+    void toStringTest() {
+        EncryptionEngine e = new EncryptionEngine("potatoes", "irishveg");
+        System.out.println(e);
+        assertTrue(true);
+    }
 }

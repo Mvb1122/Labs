@@ -13,7 +13,8 @@ public class EncryptionEngine {
 
     // methods
     public String encrypt() throws VigenereException {
-        if (str.length() != key.length()) throw new VigenereException("Your key and string-to-be-encrypted don't have the same length!");
+        if (str.length() != key.length()) throw new VigenereException("Your key and value don't have the same length!");
+        
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
@@ -33,5 +34,30 @@ public class EncryptionEngine {
             result += ((int) encryptedText.charAt(i)) + " ";
         }
         return result.substring(0, result.length() - 1);
+    }
+
+    public char[] toCharArray() throws VigenereException {
+        return stringToCharArray(encrypt());
+    }
+
+    public static char[] stringToCharArray(String s) {
+        char[] output = new char[s.length()];
+        for (int i = 0; i < s.length(); i++) {
+            output[i] = s.charAt(i);
+        }
+        return output;
+    }
+
+    /**
+     * By the way, you can allow Java's System.out.print() methods to print out your EncryptionEngine by simply overriding the Object.toString()
+     * method-- which is called whenever java attempts to print it out.
+     */
+    @Override
+    public String toString() {
+        try {
+            return toASCII(encrypt());
+        } catch (VigenereException e) {
+            return "";
+        }
     }
 }

@@ -5,6 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import VinegereEncryption.*;
 
+
+/**
+ * Implements the two tests from the lab write-up and then demonstrates overriding the toString() method.
+ */
 public class EncryptionTests {
     @Test
     void test1() {

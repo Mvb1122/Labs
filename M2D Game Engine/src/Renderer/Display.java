@@ -10,7 +10,12 @@ public class Display {
     // Note: This RenderObject[][] only holds a **REFERENCE** to an array, so that when the original is mutated, this one reflects the change.
     private static RenderObject[][] data;
     private static LevelData level;
+
+    /**
+     * The time in miliseconds per frame.
+     */
     private static long frameTime;
+    public static Thread renderer;
     static {
         setFPS(60);
     }
@@ -25,23 +30,49 @@ public class Display {
         createAndShowGUI();
 
         // Refresh the display 60 times a second.
-        Thread renderer = new Thread(() -> {
+        renderer = new Thread(() -> {
+            renderLoop:
             while (true) {
                 try {
                     // 60 fps = ~16 millis per frame.
                     // 1 ms = 1/1000 per frame
                     // 60f/1s -> 60f / 1ms = 60f * 0.001
                     Thread.sleep(frameTime);
-                } catch (InterruptedException ignored) {;}
+                    if (data != null) repaint();
+                } catch (InterruptedException e) {
+                    // Sleep until another InterruptedException is thrown.
+                    while (true) {
+                        try {
+                            while (true) Thread.sleep(1);
+                        } catch (InterruptedException eg) {
+                            repaint();
+                            continue renderLoop;
+                        }
+                    }
+                }
 
             /*
                 This forces the window to be re-rendered once every 16ms-- to refresh the grid
                 so that it's up-to-date with the array.
              */
-                f.repaint();
+
             }
         });
         renderer.start();
+    }
+
+    /**
+     * Repaints the display.
+     */
+    private static void repaint() {
+        /*
+        try {
+            Thread.sleep(frameTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        */
+        f.repaint();
     }
 
     /**
@@ -49,7 +80,7 @@ public class Display {
      * @param FPS The Frames-Per-Second to render at.
      */
     public static void setFPS(double FPS) {
-        frameTime = (long) (FPS * 0.001);
+        frameTime = (long) (1000 / FPS);
     }
 
 
@@ -65,6 +96,15 @@ public class Display {
         f.add(new UI(data));
         f.pack();
         f.setVisible(true);
+    }
+
+    /**
+     * Returns the amount of time between frames, in milliseconds.
+     * @return By Default: 6ms
+     * @implNote You can change the FPS with setFPS(), but this method returns the frame time, not the frames per second.
+     */
+    public static long getFPS() {
+        return frameTime;
     }
 }
 
@@ -124,6 +164,6 @@ class UI extends JPanel {
             for (int i = 0; i < LevelData.background.length; i++) for (int j = 0; j < LevelData.background[i].length; j++)
                 if (LevelData.background[i][j] != null) return LevelData.background[i][j];
         }
-        return Color.BLUE;
+        return LevelData.defaultBackGroundColor;
     }
 }

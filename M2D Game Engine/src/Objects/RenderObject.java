@@ -3,7 +3,6 @@ package Objects;
 import Renderer.Coordinate;
 
 import java.awt.*;
-import java.util.Arrays;
 
 public class RenderObject {
     public Color[][] texture;
@@ -15,7 +14,7 @@ public class RenderObject {
      * This version automatically generates collision data from the texture.
      * @param x The x-location in world space (Top right corner)
      * @param y The y-location in world space (Top right corner)
-     * @param texture A Color[][] which specifes the pixels to be rendered.
+     * @param texture A Color[][] which specifies the pixels to be rendered.
      */
     public RenderObject(int x, int y, Color[][] texture) {
         this.x = x;
@@ -24,7 +23,8 @@ public class RenderObject {
         collision = new boolean[texture.length][];
         for (int i = 0; i < collision.length; i++) {
             collision[i] = new boolean[texture[i].length];
-            Arrays.fill(collision[i], true);
+            for (int j = 0; j < collision[i].length; j++)
+                if (texture[i][j] != null) collision[i][j] = true;
         }
 
         width = texture.length;

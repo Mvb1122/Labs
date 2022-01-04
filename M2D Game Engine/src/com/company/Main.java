@@ -9,8 +9,9 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        Color[][] texture = new Color[1][1];
+        Color[][] texture = new Color[1][2];
         texture[0][0] = Color.yellow;
+        texture[0][1] = Color.red;
 
         ArrayList<RenderObject> objects = new ArrayList<>();
 
@@ -25,8 +26,17 @@ public class Main {
         objects.add(new RenderObject(0, faceHeight, texture));
 
         // Start up the display
-            // Note: I converted the arraylist within the constructor here,
-            // TODO: Make an init() overload which accepts the same arguments, just with an Arraylist instead of an Array.
-        LevelData.init(objects.toArray(new RenderObject[0]), new boolean[10][10], Color.black, 60, 30);
+            // Note: I used the ArrayList<RenderObject>, boolean[][], color, int, int constructor here.
+        LevelData.init(objects, new boolean[60][30], Color.BLUE, 60, 30);
+
+        int reps = 0;
+        while (true) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException ignored) {;}
+
+            LevelData.apply(new RenderObject(5 + reps, reps + 5, new Color[][]{{Color.red, Color.magenta}, {Color.green, Color.lightGray}}));
+            reps++;
+        }
     }
 }

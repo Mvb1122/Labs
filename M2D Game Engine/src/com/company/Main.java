@@ -23,11 +23,10 @@ public class Main {
         objects.add(new RenderObject(1, faceHeight, texture));
         objects.add(new RenderObject(2, faceHeight, texture));
         objects.add(new RenderObject(3, faceHeight, texture));
-        objects.add(new RenderObject(0, faceHeight, texture));
 
         // Start up the display
             // Note: I used the ArrayList<RenderObject>, boolean[][], color, int, int constructor here.
-        LevelData.init(objects, new boolean[60][30], Color.GRAY, 60, 30);
+        LevelData.init(objects, new boolean[60][30], Color.BLUE, 60, 30);
 
         int reps = 0;
         while (true) {

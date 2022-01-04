@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        Color[][] texture = new Color[1][2];
-        texture[0][0] = Color.yellow;
-        texture[0][1] = Color.red;
+        Color[][] texture = new Color[2][2];
+        texture[0][0] = Color.white;
+        texture[0][1] = Color.black;
 
         ArrayList<RenderObject> objects = new ArrayList<>();
 
@@ -27,7 +27,7 @@ public class Main {
 
         // Start up the display
             // Note: I used the ArrayList<RenderObject>, boolean[][], color, int, int constructor here.
-        LevelData.init(objects, new boolean[60][30], Color.BLUE, 60, 30);
+        LevelData.init(objects, new boolean[60][30], Color.GRAY, 60, 30);
 
         int reps = 0;
         while (true) {

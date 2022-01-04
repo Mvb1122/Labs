@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="M2D Game Engine:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/M2D_Game_Engine_jar</output-path>
+    <root id="archive" name="M2D Game Engine.jar">
+      <element id="module-output" name="M2D Game Engine" />
+    </root>
+  </artifact>
+</component>

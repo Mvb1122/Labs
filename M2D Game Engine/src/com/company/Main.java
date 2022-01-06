@@ -7,7 +7,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Main {
-
     public static void main(String[] args) {
         Color[][] texture = new Color[2][2];
         texture[0][0] = Color.white;
@@ -26,16 +25,14 @@ public class Main {
 
         // Start up the display
             // Note: I used the ArrayList<RenderObject>, boolean[][], color, int, int constructor here.
-        LevelData.init(objects, new boolean[60][30], Color.BLUE, 60, 30);
+        LevelData.init(objects, new boolean[60][30], Color.GRAY, 60, 30);
 
-        int reps = 0;
-        while (true) {
+        for (int i = 0; i < 2 * 9; i+=2) {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException ignored) {;}
 
-            LevelData.apply(new RenderObject(5 + reps, reps + 5, new Color[][]{{Color.red, Color.magenta}, {Color.green, Color.lightGray}}));
-            reps++;
+            LevelData.apply(new RenderObject(5 + i, i + 5, new Color[][]{{Color.red, Color.magenta}, {Color.green, Color.lightGray}}));
         }
     }
 }

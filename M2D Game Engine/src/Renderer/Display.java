@@ -64,7 +64,7 @@ public class Display {
     /**
      * Repaints the display.
      */
-    private static void repaint() {
+    private static synchronized void repaint() {
         /*
         try {
             Thread.sleep(frameTime);

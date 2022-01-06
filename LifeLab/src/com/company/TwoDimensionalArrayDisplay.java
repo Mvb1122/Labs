@@ -1,4 +1,5 @@
-package com.company;// Abstracted from my github at https://github.com/Mvb1122/Labs/blob/main/Ceiling%20Tiles/src/com/company/TwoDimensionalArrayDisplay.java
+package com.company;
+// Abstracted from my github at https://github.com/Mvb1122/Labs/blob/main/Ceiling%20Tiles/src/com/company/TwoDimensionalArrayDisplay.java
 import javax.swing.*;
 import java.awt.*;
 

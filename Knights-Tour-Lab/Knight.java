@@ -108,6 +108,7 @@ public class Knight {
 
   /**
   *  This method checks if the space selected is valid to move to or not.
+  * @returns true if the move is valid, false if it's invalid or falls outside the grid.
   */
   private boolean validateMove(int x, int y) {
     try {

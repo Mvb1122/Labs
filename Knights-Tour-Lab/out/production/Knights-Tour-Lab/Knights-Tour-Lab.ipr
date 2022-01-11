@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactManager">
+    <artifact type="jar" name="Knights-Tour-Lab:jar">
+      <output-path>$PROJECT_DIR$/out/artifacts/Knights_Tour_Lab_jar</output-path>
+      <root id="archive" name="Knights-Tour-Lab.jar">
+        <element id="module-output" name="Knights-Tour-Lab" />
+      </root>
+    </artifact>
+  </component>
   <component name="InspectionProjectProfileManager">
     <profile version="1.0">
       <option name="myName" value="Project Default" />
@@ -13,5 +21,8 @@
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_16" default="true" project-jdk-name="16" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
   </component>
 </project>

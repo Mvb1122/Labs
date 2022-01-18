@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class Knight {
@@ -55,6 +56,12 @@ public class Knight {
     x += xTrans[bestMove];
     y += yTrans[bestMove];
     world[x][y] = ++moves;
+
+    // Reduce the accessibility scores of visitable squares by one.
+      // Ignores cells outside the world.
+    for (int i = 0; i < xTrans.length; i++) try {
+      accessibleWorld[x + xTrans[i]][y + yTrans[i]]--;
+    } catch (ArrayIndexOutOfBoundsException ignored) {;}
   }
 
 

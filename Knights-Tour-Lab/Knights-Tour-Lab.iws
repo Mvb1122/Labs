@@ -13,12 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14e97755-ecc7-462b-8e6e-d51571d13918" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/Knight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Knights-Tour-Lab.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/Knights-Tour-Lab.ipr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Knights-Tour-Lab.iws" beforeDir="false" afterPath="$PROJECT_DIR$/Knights-Tour-Lab.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Knights-Tour-Lab/Knights-Tour-Lab.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Knights-Tour-Lab/Knights-Tour-Lab.ipr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Knights-Tour-Lab/Knights-Tour-Lab.iws" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Knights-Tour-Lab/Knights-Tour-Lab.iws" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,5 +88,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

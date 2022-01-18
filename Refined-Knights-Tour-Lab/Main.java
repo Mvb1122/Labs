@@ -5,7 +5,7 @@ public class Main {
   public static void main(String[] args) {
     // Ask the user if they'd like to solve or to get a random one.
     Scanner s = new Scanner(System.in);
-    System.out.println("Do you want to solve for a solution that reaches all cells or to do a random solution? (Y for solve/N for random)");
+    System.out.println("Do you want to solve for a solution that reaches all cells or an accessibly-based solution? (Y for solve/N for the latter)");
     String input = s.next().toUpperCase();
     s.close();
 

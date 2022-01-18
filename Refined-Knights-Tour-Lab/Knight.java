@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class Knight {
@@ -92,7 +91,7 @@ public class Knight {
 
   /**
   *  This method checks if the space selected is valid to move to or not.
-  * @returns true if the move is valid, false if it's invalid or falls outside the grid.
+  * @return true if the move is valid, false if it's invalid or falls outside the grid.
   */
   private boolean validateMove(int x, int y) {
     try {

@@ -22,19 +22,19 @@ public class Knight {
   }
 
   /**
-  * Creates a new knight at the specified location.
-  * @param x The X-location of the knight.
-  * @param y The Y-location of the knight.
-  * @param world The world in which the knight is located.
-  */
+   * Creates a new knight at the specified location.
+   * @param x The X-location of the knight.
+   * @param y The Y-location of the knight.
+   * @param world The world in which the knight is located.
+   */
   public Knight(int x, int y, int[][] world) {
     this.x = x; this.y = y; Knight.world = world;
     world[x][y] = ++moves;
   }
 
   /**
-  *  Moves the knight in a random location.
-  */
+   *  Moves the knight in a random location.
+   */
   public void process() throws tickException {
     // Find the best move from the Knight's location.
     int bestMove = findBestMove();
@@ -54,7 +54,7 @@ public class Knight {
   private void move(int bestMove) {
     x += xTrans[bestMove];
     y += yTrans[bestMove];
-    world[x][y]++;
+    world[x][y] = ++moves;
   }
 
 
@@ -69,13 +69,13 @@ public class Knight {
    */
   private int findBestMove() {
     // Find the best move.
-      // Create variables to hold the move's index 'n stuff.
+    // Create variables to hold the move's index 'n stuff.
     int lowestAccessibilityScore = Integer.MAX_VALUE;
     int lowestAccessibleIndex = Integer.MAX_VALUE;
-      // Loop through all the moves.
+    // Loop through all the moves.
     for (int i = 0; i < xTrans.length; i++) {
       // Evaluate if the move is the best one yet, or if it's worse.
-        // Note, the AIOOBE exception here is ignored because moves outside the world obviously aren't valid.
+      // Note, the AIOOBE exception here is ignored because moves outside the world obviously aren't valid.
       try {
         if (accessibleWorld[x + xTrans[i]][y + yTrans[i]] < lowestAccessibilityScore && validateMove(x + xTrans[i], y + yTrans[i])) {
           // If this is the best move so far, write it down.
@@ -90,9 +90,9 @@ public class Knight {
   }
 
   /**
-  *  This method checks if the space selected is valid to move to or not.
-  * @return true if the move is valid, false if it's invalid or falls outside the grid.
-  */
+   *  This method checks if the space selected is valid to move to or not.
+   * @return true if the move is valid, false if it's invalid or falls outside the grid.
+   */
   private boolean validateMove(int x, int y) {
     try {
       int t = world[x][y];
